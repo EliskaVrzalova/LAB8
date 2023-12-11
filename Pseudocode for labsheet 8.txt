@@ -1,0 +1,759 @@
+eliska vrzalova
+c00301768
+date: 13/11/2023
+est time: 15 mins
+actual time: 12 mins
+Q1
+
+//variables
+monthNum = 0;
+monthName = "";
+
+//ask user for input 
+display message "Enter a number of a month:";
+input monthNum;
+ 
+ //switch statement
+ 
+ switch(monthNum)
+	case 1:
+		monthName = "January";
+		break;
+	case 2:
+		monthName = "February";
+		break;
+	case 3:
+		monthName = "March";
+		break;
+	case 4:
+		monthName = "April";
+		break;
+	case 5:
+		monthName = "May";
+		break;
+	case 6:
+		monthName = "June";
+		break;
+	case 7:
+		monthName = "July";
+		break;
+	case 8:
+		monthName = "August";
+		break;
+	case 9:
+		monthName = "September";
+		break;
+	case 10:
+		monthName = "October";
+		break;
+	case 11:
+		monthName = "November";
+		break;
+	case 12:
+		monthName = "December";
+		break;
+	default: 
+		monthName = "Error: the number entered is outside the range 1-12.";
+		break;
+end switch
+
+display message "The month is:" + monthName; //answer
+
+//Test data:
+Test 1: user enters: 2, output should be: "February"
+Test 2: user enters: 11, output should be: "November"
+Test 3: user enters: 15, output should be: "Error: the number entered is outside the range 1-12."
+----------------------------------------------------------------------------------------------------------------
+
+eliska vrzalova
+c00301768
+date: 13/11/2023
+est time: 15 mins
+actual time: 17 mins
+Q2
+
+main()
+start function
+
+//variables
+inches = 0;
+centimeters =0;
+
+//ask user for input
+display message "Enter the lenght in centimeters:";
+input centimeters;
+
+//error checking
+if(centimeters <0)
+	display message "Error: the number entered cannot be less than 0";
+else
+	inches = inchEquivalent(centimeters); //function call
+end if
+
+//answer
+display message "The lenght in inches is:" + inches;
+
+end function
+
+inchEquivalent(t_centimeters)
+start function
+
+//variables
+CONVERSION = 0.394;
+inches = 0;
+
+//calculation
+inches = t_centimeters * CONVERSION; //converts centimeters to inches
+
+return inches; //return the inches to the calling function
+
+end function
+
+//Test data
+Test 1: user enters: 100, output should be: "39.4"
+Test 2: user enters: 250, output should be: "98.5"
+Test 3: user enters: -1, output should be: "Error: the number entered cannot be less than 0"
+-----------------------------------------------------------------------------------------------------
+
+eliska vrzalova
+c00301768
+date: 13/11/2023
+est time: 15 mins
+actual time: 20 mins
+Q3
+
+main()
+start function
+
+//variables
+
+seconds = 0;
+minutes = 0;
+hours = 0;
+totalSeconds = 0;
+//ask user for input
+display message "Enter the amount of seconds:";
+input seconds;
+display message "Enter the amount of minutes:";
+input minutes;
+display message "Enter the amount of hours:";
+input hours;
+
+//error checking
+if(seconds <0 or minutes <0 or hours <0)
+	display message "Error: number entered cannot be less than 0.";
+else
+	totalSeconds = totalSecs(seconds, minutes, hours); //function call
+end if
+
+//answer
+display message "Total time in seconds:" +totalSeconds;
+
+end function
+
+totalSecs(t_seconds, t_minutes, t_hours)
+start function
+
+//variables
+totalSeconds = 0;
+SECONDS = 60;
+
+//calculation
+totalSeconds = t_seconds + (t_minutes*SECONDS) + (t_hours*SECONDS*SECONDS); //calculates the total time in seconds
+
+return totalSeconds;
+
+end function
+
+//test data
+Test 1: user enters: 60 5 1, output should be : 3960
+Test 2: user enters: 120 12 3, output should be: 11 640
+Test 3: user enters: 120 0 3, output should be: "Error: the number entered cannot be less than 0"
+Test 3: user enters: 120 12 0,output should be: "Error: the number entered cannot be less than 0"
+Test 3: user enters:0 12 3 , output should be: "Error: the number entered cannot be less than 0"
+----------------------------------------------------------------------------------------------------------------------------------
+eliska vrzalova
+c00301768
+date: 15/11/2023
+est time: 15 mins
+actual time: 20 mins
+Q4
+
+main()
+start function
+
+//variables 
+
+examGrade = "";
+gradeNum = 0;
+
+//input
+display message "Enter your exam grade:";
+input gradeNum;
+
+//error checking
+if(gradeNum <0 or gradeNum >100)
+	display message "Error: the number is outside the range 0-100.";
+else
+	examGrade = getExamGrade(gradeNum); //function call
+	display message + examGrade;
+end if
+
+end function
+
+getExamGrade(t_gradeNum)
+start function
+
+//variables
+examGrade = "";
+FAIL = 40;
+PASS = 55;
+MERIT = 70;
+DISTINCTION = 100;
+
+//grade checking
+
+if(t_gradeNum >=0 and t_gradeNum <FAIL)
+	examGrade = "Student has failed.";
+else if(t_gradeNum >= FAIL and t_gradeNum <PASS)
+	examGrade = "Student has passed.";
+else if(t_gradeNum >= PASS and t_gradeNum < MERIT)
+	examGrade = "Student has a merit,";
+else if(t_gradeNum >= MERIT and <=100)
+	examGrade = "Student has passed with distinction.";
+end else if
+
+return examGrade;
+
+end function
+
+//test data
+//Test 1: User inputs 2, output should be: "Student has failed."
+//Test 2: User inputs 40, output should be: "Student has passed."
+//Test 3: User inputs 47, output should be: "Student has passed."
+//Test 4: User inputs 55, output should be: "Student has a merit."
+//Test 5: User inputs 60, output should be: "Student has a merit."
+//Test 6: User inputs 70, output should be: "Student has distinction."
+//Test 7: User inputs 90, output should be: "Student has passed with distinction."
+//Test 8: User inputs 100, output should be: "Student has passed with distinction."
+//Test 9: User inputs 115, output should be: "Error - the number is outside the range 0-100".
+//Test 10: User inputs -1, output should be : "Error - the number is outside the range 0-100".
+--------------------------------------------------------------------------------------------------------
+
+eliska vrzalova
+c00301768
+date: 15/11/2023
+est time: 15 mins
+actual time: 20 mins
+Q5
+
+main()
+start function
+
+//variables
+
+num1 = 0;
+num2 = 0;
+result = false;
+
+//input
+display message "Enter the first number:";
+input num1;
+display message "Enter the second number:";
+input num2;
+
+//error checking
+if(num1 < 0 or num2 <0)
+	display message "Error: the number entered cannot be less than 0.";
+else
+	result = isDivisible(t_num1, t_num2); //function call
+end if 
+
+//answer
+if(result == false)
+	display message "Number" + num1 + "is not exactly divisible by number" + num2;
+else // result == true
+	display message "Number" + num1 + "is exactly divisible by number" + num2;
+end if 
+
+end function
+
+isDivisible(t_num1, t_num2)
+start function
+
+//variables
+result = false;
+
+if(t_num1 % t_num2 ==0)
+	result = true;
+else
+	result = false;
+end if
+
+return result;
+
+end function
+
+//test data
+//Test 1: User enters: 6 2, output should be: "Number 6 is exactly divisible by number 2."
+//Test 2: User enters: 6 4, output should be: "Number 6 is not exactly divisible by number 4."
+//Test 3: User enters: 6 -1, output should be: "Error: the number entered cannot be less than 0"
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+eliska vrzalova
+c00301768
+date: 15/11/2023
+est time: 20 mins
+actual time: 25 mins
+Q6
+
+main()
+start function
+
+//variables
+cardSuit = "";
+cardName = "";
+
+//function calls
+cardSuit = getCardSuit ();
+cardName = getCardFace();
+
+//answer
+display message "The card is:" + cardName + "" + cardSuit;
+
+end function
+
+
+
+getCardSuit()
+start function
+
+numberSuit = (rand() % 4) +1;
+cardSuit = "";
+
+if(numberSuit == 1)
+	cardSuit = "Hearts";
+
+else if(numberSuit == 2)
+	cardSuit = "Diamonds";
+
+else if(numberSuit == 3)
+	cardSuit = "Spades";
+
+else 
+	cardSuit = "Clubs";
+
+return cardSuit; 
+end function
+
+
+getCardFace()
+start function
+
+numberCard = (rand() % 13) +1;
+cardName = "";
+
+switch(numberCard)
+
+case 1:
+	cardName = "Ace";
+	break;
+case 2:
+	cardName = "2";
+	break;
+case 3:
+	cardName = "3";
+	break;
+case 4:
+	cardName = "4";
+	break;
+case 5:
+	cardName = "5";
+	break;
+
+case 6:
+	cardName = "6";
+	break;
+case 7:
+	cardName = "7";
+	break;
+case 8:
+	cardName = "8";
+	break;
+case 9:
+	cardName = "9";
+	break;
+case 10:
+	cardName = "10";
+	break;
+case 11:
+	cardName = "Jack";
+	break;
+case 12:
+	cardName = "Queen";
+	break;
+case 13:
+	cardName = "King";
+	break;
+end switch
+
+return cardName;
+
+end function
+
+//test data
+//Test 1 : Returned values are: 4 12, output should be: "The card is Queen Clubs"
+//Test 2 : Returned values are: 1 7, output should be: "The card is 7 Hearts"
+//Test 3 : Returned values are: 2 1, output should be: "The card is Ace Diamonds"
+------------------------------------------------------------------------------------------------
+
+
+eliska vrzalova
+c00301768
+date: 15/11/2023
+est time: 20 mins
+actual time: 25 mins
+Q7
+
+main()
+start function
+
+//variables
+age = 0;
+price = 0;
+
+//input
+display message "Enter your age:";
+input age;
+
+//error checking
+if(age<0)
+	display message "Error: number entered cannot be less than 0.";
+else
+	price = calculatePrice(age); //function call
+	display message "The price of the ticket is:" + price;
+end if
+
+end function
+
+
+
+calculatePrice(t_age)
+start function
+
+//variables
+price = 0;
+FULL_PRICE = 6;
+FREE_CHILD_AGE = 5;
+HALF_PRICE_AGE = 12;
+FULL_PRICE_AGE_BOTTOM = 13;
+FULL_PRICE_AGE_TOP = 54;
+FREE_ADULT_AGE = 55;
+
+
+if(t_age < FREE_CHILD_AGE)
+	price = 0;
+else if(t_age >= FREE_CHILD_AGE and t_age <= HALF_PRICE_AGE)
+	price = FULL_PRICE / 2;
+else if(t_age >= FULL_PRICE_AGE_BOTTOM and t_age <= FULL_PRICE_AGE_TOP)
+	price = FULL_PRICE;
+else if(t_age >= FREE_ADULT_AGE)
+	price = 0;
+end else if
+
+return price;
+
+end fuction
+
+//test data
+//Test 1: user enters 2, output should be: "The price of the ticket is: 0"
+//Test 2: user enters 5, output should be: "The price of the ticket is: 3"
+//Test 3: user enters 12, output should be: "The price of the ticket is: 3"
+//Test 4: user enters 13, output should be: "The price of the ticket is: 6"
+//Test 5: user enters 54, output should be: "The price of the ticket is: 6"
+//Test 5: user enters 55, output should be: "The price of the ticket is: 0"
+//Test 6: user enters 64, output should be: "The price of the ticket is: 0"
+
+---------------------------------------------------------------------------------------------
+eliska vrzalova
+c00301768
+date: 20/11/2023
+est time: 20 mins
+actual time: 14 mins
+Q8
+
+main()
+start function 
+
+//variables
+lenght = 0;
+width = 0;
+area = 0;
+perimeter = 0;
+
+//input
+display message "Enter the lenght in meters:";
+input lenght;
+display message "Enter width in meters:";
+input width;
+
+//error checking
+if(width <= 0 or lenght <= 0)
+	display message "Error: the number entered cannot be less than or equal to 0.";
+else 
+	area = calAreaRectangle(lenght, width);
+	display message "The area of the rectangle is" + area + "meters.";
+	perimeter = calPerimeterRectangle (lenght, width);
+	display message "The perimeter of the rectangle is" + perimeter + "meters.";
+end if
+
+end function
+
+
+calAreaRectangle(t_lenght, t_width)
+start function
+
+//variables
+area = 0;
+
+//calculation
+area = t_lenght * t_width;
+
+return  area;
+
+end function
+
+calPerimeterRectangle(t_lenght, t_width)
+start function
+
+//variables
+perimeter = 0;
+
+//calculation
+perimeter = (t_lenght + t_width) * 2;
+
+return perimeter;
+
+end function
+
+//test data
+//Test 1: user enters 2 5, output should be: "The area is 10 meters." and "The perimeter is 14 meters."
+//Test 2: user enters 4 8, output should be: "The area is 32 meters." and "The perimeter is 24 meters."
+//Test 3: user enters -1 8, output should be : "Error: the number entered cannot be less than or equal to 0."
+//Test 4: user enters 0 8, output should be : "Error: the number entered cannot be less than or equal to 0."
+--------------------------------------------------------------------------------------------------------------------------
+
+eliska vrzalova
+c00301768
+date: 20/11/2023
+est time: 20 mins
+actual time: 14 mins
+Q9
+
+main()
+start function
+
+//variables
+seconds = 0;
+
+//input
+display message "Enter the amount of seconds:",
+input seconds;
+
+//error checking
+if(seconds < 0)
+	display message "Error: the number entered cannot be less than 0.";
+else
+	secsToHMS(seconds);
+end if
+
+end function
+
+secsToHMS(t_seconds)
+start function
+
+//variables
+minutes = 0;
+hours = 0
+seconds = 0;
+SECS_IN_MIN = 60;
+SECS_IN_HOUR = 3600;
+
+//calculation
+hours = t_seconds % SECS_IN_HOUR; //amount of hours
+t_seconds = t_seconds - (hours * SECS_IN_HOUR); 
+
+minutes = t_seconds % SECS_IN_MIN; // amount of minutes 
+t_seconds = t_seconds - (minutes * SECS_IN_MIN);
+
+seconds = t_seconds; //amount of seconds;
+
+//answer
+display message "" + t_seconds + " seconds is" + hours + " hours" + minutes "minutes and" + seconds + "seconds.";
+end function
+
+//test data
+//Test 1: user enters 3662, output should be: " 1 hour 1 minute(s) and 2 second(s)."
+//Test 2: user enters 5463, output should be: " 1 hour 31 minute(s) and 3 second(s)."
+//Test 3: user enters -1, output should be: "Error: number ebtered cannot be less than 0."
+------------------------------------------------------------------------------------------------------
+
+eliska vrzalova
+c00301768
+date: 22/11/2023
+est time: 20 mins
+actual time: 22 mins
+Q10
+
+main()
+start function
+
+//variables
+studentNum = "";
+assessmentMark = 0;
+finalMark = 0;
+studentResult = 0;
+
+//input
+display message "Enter your student number:";
+input studentNum;
+display message "Enter your assessment mark:";
+input assessmentMark;
+display message "Enter your final exam mark:";
+input finalMark;
+
+//error checking
+if(examMark >= 0 and examMark <= 100 and assessmentMark >= 0 and assessmentMark <= 100)
+	studentResult = calFinalResult(assessmentMark, finalMark);
+	display message "Your student number:" + studentNum;
+	display message "Your final result:" + studentResult + "%";
+else
+	display message "Error: exam mark and final mark need to have value 0 - 100.";
+end if
+
+end function
+
+calFinalResult(t_assessmentMark, t_finalMark)
+start function
+
+//variables
+studentResult = 0;
+ASSESSMENT_WEIGHT = 0.3;
+FINAL_EXAM_WEIGHT = 0.7;
+
+//calculation 
+
+t_assessmentMark = t_assessmentMark * ASSESSMENT_WEIGHT;
+t_finalMark = t_finalMark * FINAL_EXAM_WEIGHT;
+studentResult = t_assessmentMark + t_finalMark; //calculates the final percentage result student gets
+
+return studentResult;
+
+end function
+
+//test data
+//Test 1: user enters: 60 80, output should be: "Your final result: 74%"
+//Test 2: user enters: 75 30, output should be: "Your final result: 43.5%"
+//Test 3: user enters: 75 -1, output should be: "Error: exam mark and final mark need to have value 0 - 100."
+//Test 4: user enters: 0 30, output should be: "Your final result: 21%"
+---------------------------------------------------------------------------------------------------------------------------
+
+eliska vrzalova
+c00301768
+date: 22/11/2023
+est time: 20 mins
+actual time: 15 mins
+Q11
+
+main()
+start function
+
+//variables
+passangers = 0;
+journey = 0;
+totalprice = 0;
+
+//input
+display message "Enter the number of passangers:";
+input passangers;
+display message "Enter the lenght of journey in kms:";
+input journey;
+
+//function call
+totalPrice = calCost(passangers, journey);
+
+display message "The total cost of" + passangers + "people travelling" + journey + "kms:" + totalPrice + "euro";
+
+end function
+
+calCost(t_passangers, t_journey)
+start function
+
+//variables
+NO_CHARGE_JOURNEY = 3;
+MIN_CHARGE = 4;
+totalPrice = 0;
+
+//calculation
+if(t_journey <= NO_CHARGE_JOURNEY)
+	totalPrice = passangers * MIN_CHARGE;
+else
+	totalPrice = (passangers * MIN_CHARGE) + (passangers*(t_journey - NO_CHARGE_JOURNEY));
+end if
+
+return totalPrice;
+
+end function
+
+//test data
+//test 1: user enters: 10 3, output should be: "The total cost of 3 people travelling 10 kms: 33 euro
+//test 2: user enters: 3 3, output should be: "The total cost of 3 people travelling 3 kms: 12 euro
+//test 3: user enters: 15 4, output should be: "The total cost of 4 people travelling 15 kms: 64 euro
+-----------------------------------------------------------------------------------------------------------------
+
+eliska vrzalova
+c00301768
+date: 22/11/2023
+est time: 20 mins
+actual time: 15 mins
+Q12
+
+main()
+start function
+
+//variables
+wallHeight = 0;
+noDays = 0;
+
+//input
+display message "Enter the height of the wall in feet:";
+input wallHeight;
+
+//function call
+noDays = calNoDays(wallHeight);
+
+display message "It will take" + noDays + "days for the worm to get to the top of the wall.";
+
+end function
+
+calNodays(t_wallHeight)
+start function
+
+//variables
+oneDay = 1;
+daysTaken = 0;
+
+//calculation
+daysTaken = (oneDay * t_wallHeight) - 1;
+end function
+
+
+
+	
+
+
+
+
+
+
